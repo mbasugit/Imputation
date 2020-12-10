@@ -1,4 +1,4 @@
-# Imputation
+# TEEBoT
 Folder : code : Includes all the code
 
 Folder : input : Include all the input files neede to run the codes
