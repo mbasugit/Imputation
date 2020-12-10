@@ -2,7 +2,7 @@
 Pipeline for tissue-specific gene expression prediction from the whole blood transcriptome.
 For each tissue a linear model is build using GTEx data. 
 
-Data download
+## Data download
 Data is downloaded from 
 
 Folder : code : Includes all the code
