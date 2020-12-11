@@ -36,9 +36,9 @@ load(paste0(workdir,"/input/gtexdata_v6.RData"));
 #load("/Volumes/5TBbackup/UMD2019/project2_scratch_mbasu/gtex_v6/blood_cross_talk/tissue_pair_work_v6.RData")
 load(paste0(workdir,"/input/tissue_pair_work_v6.RData"));
 
-#loading patient ids that have snps information
-#load("/Volumes/5TBbackup/UMD2019/project2_scratch_mbasu/gtex_v6/blood_cross_talk/gtex-v6/PC_SNPs/snps_sample_v6.RData")
-load(paste0(workdir,"/input/snps_sample_v6.RData"));
+#finding patient ids that have snps information
+load(paste0(workdir,"/input/genotype.v6.chr1_22.Rdata") #loading genotype data obatined from dbGaP
+pat.snps=sapply(strsplit(colnames(genotype.v6[["chr2"]]), split="-"), '[[', 2)
 
 
 gene=gtex.pc$Name
