@@ -39,6 +39,10 @@ The input parameters to run the code are index, run, fold, ENS.
 #### Output
 Each Target tissue prediction file for example "Whole Blood_xx_lasso_regress_G_Spl_10_20.Rdata", 
         where xx will be replaced by the target tissue name. 
+This Rdata contanis two objects, gene.regress.glmnet and gene.select.LLR.
+1) gene.regress.glmnet : is a list, gene.regress.glmnet[["Mean-first"]] contains our desired correlation coefficient 
+that is the predictibility scores.
+2) gene.select.LLR : is a list with LLR ratio and pvalue
 
 note: Download the code file (regression_model_articleoutput.r) and the function.r in the same folder. Example path to store the
 codes is "/home/Desktop/Imputation". Within Imputation make a folder named "input" and "output". In the "output" folder the output of the codes automatically gets saved.
