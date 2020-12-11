@@ -1,4 +1,4 @@
-format_gtexdatav6<-function(){
+format_gtexdatav6<-function(dirx){
 library(data.table)
 dt=fread("phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt") #phenotype data 
 pheno.dt=dt[-1,]
@@ -71,7 +71,7 @@ gtex.pc1=newrpkm.pc[,c(-1,-2,-3,-(l-3),-(l-2),-(l-1),-l),with=F]
 zero.l=sum(gtex.pc1==0)
 extr.gtex.pc=newrpkm.pc[,c(1,2,3,(l-3),(l-2),(l-1),l),with=F]
 gtex.pc=cbind(gtex.pc1,extr.gtex.pc)
-save(gtex.pc,expc.nt,pheno.dt,pheno.subj,patients,file="Desktop/input/GTExdata_v6.RData")
+save(gtex.pc,expc.nt,pheno.dt,pheno.subj,patients,file=paste0(dirx,"/input/gtexdata_v6.RData"))
 }
 
 
