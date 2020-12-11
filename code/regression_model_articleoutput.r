@@ -15,10 +15,10 @@ run=toString(args[2]) #category
 fold=as.numeric(args[3]); #fold
 ENS=as.numeric(args[4]); #ENS
 
-#PC1=as.numeric(args[3]); #GE
-#PC2=as.numeric(args[4]); #Sp
-#PC3=as.numeric(args[5]); #Snp
-PC1=10; PC2=20; 
+PC1=as.numeric(args[3]); #GE
+PC2=as.numeric(args[4]); #Sp
+PC3=as.numeric(args[5]); #Snp
+#PC1=10; PC2=20; 
 
 #workdir="/Volumes/5TBbackup/UMD2019/project2_scratch_mbasu/gtex_v6/blood_cross_talk/gtex-v6"
 
