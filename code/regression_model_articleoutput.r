@@ -29,8 +29,9 @@ PC3=as.numeric(args[5]); #Snp
 source(paste0(workdir,'/code/function.r'));
 
 #load gtex data 
-#load("/Volumes/5TBbackup/UMD2019/project2_scratch_mbasu/gtex_v6/data/gtexdata_v6.RData")
-load(paste0(workdir,"/input/gtexdata_v6.RData"));
+format_gtexdatav6(); 
+#In this function we directly read gtex v6 phenotype data and gene expression data and merge them into format convenient to be used in the code.
+
 
 #Common samples between blood and target tissue
 #load("/Volumes/5TBbackup/UMD2019/project2_scratch_mbasu/gtex_v6/blood_cross_talk/tissue_pair_work_v6.RData")
