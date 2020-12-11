@@ -1,3 +1,81 @@
+format_gtexdatav6<-function(){
+library(data.table)
+dt=fread("phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt") #phenotype data 
+pheno.dt=dt[-1,]
+setnames(pheno.dt,as.character(dt[1,]))
+#subj=unlist(lapply(phe.dt$SUBJID, function(tt) {substr(tt,6,9)}))
+pheno.subj=sapply(1:nrow(pheno.dt), function(x){ y=unlist(strsplit(pheno.dt$SUBJID[x], split="-")); l=length(y); y[l] })
+
+#gene expression
+rpkm=fread("All_Tissue_Site_Details_Analysis.combined.rpkm.gct") #gene expression data
+rpkm$Name = sapply(strsplit(rpkm$Name, '[.]'), '[[', 1)
+
+rpkm1=unique(rpkm)
+
+rpkm.col = colnames(rpkm); #gtex.row = rownames(gtex);
+patients = unique(sapply(strsplit(rpkm.col[-(1:2)], split="-"), '[[', 2))
+
+
+annt=fread("GTEx_Data_V6_Annotations_SampleAttributesDS.txt")
+tmp = data.table(SAMPID=rpkm.col[-(1:2)], myid = 1:(length(rpkm.col) -2)); 
+setkey(tmp, SAMPID); 
+setkey(annt, SAMPID);
+annt = merge(x=tmp, y=annt, by="SAMPID"); 
+annt$patient = sapply(strsplit(annt$SAMPID, split="-"), '[[', 2)
+annt1=annt[order(annt$myid),]
+expc.nt=annt1
+#========================================================================
+
+#=======================================================================
+#### gene information to identify protein coding genes
+require(pracma)
+gene=fread("Homo_sapiens.gene_info") 
+gene.symbol=gene$V3
+
+gene.IDs=gene$V6 
+ensmbl=array("", c(length(gene.IDs),1))
+for (i in seq(length(gene.IDs))){
+	gIDs=gene.IDs[i]
+	tt=strfind(gIDs, 'Ensembl:', overlap = TRUE)
+	if (!is.null(tt)){
+		ensmbl[i]=substr(gIDs, tt+8, tt+22)
+	}
+}
+
+gene[, c("Name") := ensmbl]
+
+tmp = data.table(Name=gene$Name, myid = 1:dim(gene)[1]); setkey(tmp, Name); 
+newrpkm = merge(x=tmp, y=rpkm, by="Name") 
+
+tmp = data.table(Name=rpkm$Name, myid = 1:dim(rpkm)[1]); setkey(tmp, Name);
+newgene = merge(x=tmp, y=gene, by="Name") #contains the newgene with only those which are in gtex
+  
+newrpkm$myid = newgene$myid; 
+#the order of genes in newrpkm and newgene are same, checked using which(newrpkm$myid!=newgene$myid)
+newrpkm$geneSym = newgene$V3 #gene name
+newrpkm$geneFun = newgene$V9; #gene description
+newrpkm$geneKnd = newgene$V10; #gene type
+newrpkm$chromosome = newgene$V7; #chromosome
+
+newrpkm.pc = newrpkm[!is.na(newrpkm$geneKnd) & newrpkm$geneKnd=="protein-coding" ] #only protein coding genes
+g=newrpkm.pc$Name
+x=as.data.table(table(g))
+xg=x$g[which(x$N>1)]
+remove=unlist(sapply(1:length(xg),function(i){r=which(g %in% xg[i]); r[2:length(r)] }))
+newrpkm.pc1=newrpkm.pc[-c(remove),];
+
+newrpkm.pc2=newrpkm.pc
+newrpkm.pc=newrpkm.pc1
+l=dim(newrpkm.pc)[2]; 
+gtex.pc1=newrpkm.pc[,c(-1,-2,-3,-(l-3),-(l-2),-(l-1),-l),with=F]
+zero.l=sum(gtex.pc1==0)
+extr.gtex.pc=newrpkm.pc[,c(1,2,3,(l-3),(l-2),(l-1),l),with=F]
+gtex.pc=cbind(gtex.pc1,extr.gtex.pc)
+save(gtex.pc,expc.nt,pheno.dt,pheno.subj,patients,file="Desktop/input/GTExdata_v6.RData")
+}
+
+
+
 regression_glmnet_gene<-function(nfold,ENS,nPC,temp.tss1,temp.tss2,genes,pat.com,method,confund.x){
 require(foreach)
 require(glmnet)
