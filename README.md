@@ -1,5 +1,5 @@
 # TEEBoT 
-##(Tissue Expression Estimation using Blood Transcriptome)
+## (Tissue Expression Estimation using Blood Transcriptome)
 
 Pipeline to assess the predictability of tissue-specific gene expression (TSGE) using all available and easily accessible
 information about the individual, which includes Whole Blood transcriptome (WBT), his/her genotype, as well as basic demographic 
