@@ -123,24 +123,6 @@ print(proc.time() - ptm)
 
 
 
-#comment parallel version
-#run for 1000 genes
-
-
-
-whole genome trans
-demographic
-point to procesing for rnaseq, example
-point to procesing example splicing
-provide model for M1, M2 using whole data
-
-
-nat comm
-genome biology
-plos genetics
-genetics
-
-
 
 
 
