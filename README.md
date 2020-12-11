@@ -21,10 +21,12 @@ and FDR of the LLR p-value. Prediction accuracy for each tissue is reported base
 test (FDR<=0.05) and also have pearson correlation coefficient values beyond a predefined threshold. 
 
 
+## Code running instructions
+### For prediction of target tissue
+Code: regression_model_articleoutput.r
+Input: Input are the gene expression, phenotype and genotype file downloaded from GTEx Portal and dbGaP.
+Output: Each Target tissue prediction file for example "Whole Blood_xx_lasso_regress_G_Spl_10_20.Rdata", 
+        where xx will be replaced by the target tissue name. 
 
-Folder : code : Includes all the code
-
-Folder : input : Include all the input files neede to run the codes
-
-Folder : output : Includes the model files for M1 and M2 
-                  Also the output of the codes automatically gets saved in the output folder. 
+note: Download the code file (regression_model_articleoutput.r) and the function.r in the same folder. Example path to store the
+codes is "/home/Desktop/Imputation". Within Imputation make a folder named "input" and "output". In the "output" folder the output of the codes automatically gets saved.
