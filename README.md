@@ -30,11 +30,11 @@ test (FDR<=0.05) and also have pearson correlation coefficient values beyond a p
 Code: regression_model_articleoutput.r
 #### Input
 Input are the gene expression, phenotype and genotype file downloaded from GTEx Portal and dbGaP.
-We also have a input file "tissue_pair_work_v6.RData" which contains a table with first column as 
-whole blood, second column target tissue and third colum are the number of common samples. 
-
 The input parameters to run the code are index, run, fold, ENS. 
-1) "index" are the tissue ids, the ids for the 32 target tissues are as follows 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,32,34,37,39.  
+ We also have a input file "tissue_pair_work_v6.RData" which contains a table with first column 
+ as whole blood, second column target tissue and third colum are the number of common samples. 
+
+1) "index" are the tissue ids, the ids for the 32 target tissues are as follows 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,32,34,37,39. 
 2) "run" indicated which model to compute, M1 or M2. To compute model M1 run=100, and for M2 run=110
 3) fold : how many fold cross validation we want.
 4) ENS : how many independent predictions we want to do.
