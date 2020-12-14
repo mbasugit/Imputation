@@ -1,10 +1,9 @@
 # TEEBoT 
 ## (Tissue Expression Estimation using Blood Transcriptome)
 
-Pipeline to assess the predictability of tissue-specific gene expression (TSGE) using all available and easily accessible
-information about the individual, which includes Whole Blood transcriptome (WBT), his/her genotype, as well as basic demographic 
-information on age, gender and race. For each tissue, and for each gene, we have fit a regression models to estimate TSGE. The model (M2)
-is based on Whole blood gene expression (WBGE), Whole Blood splicing (WBSp) information and three demographic ‘confounding’ factors (CF) – Age, Race, and Sex.
+TEEBot is a tool to predict tissue-specific expression (TSGE) from an individual’s blood transcriptome and demographic 
+information (age, gender and race), with clinical implications. If his/her genotype information is avalibale, it could boost the performance of TEEBot. 
+We trained TEEBot on GTEx version 6 and evaluated its performance in a cross-validation manner. For each gene in each target tissue, we first evaluate its predictability based on LLR test and then fit a lasso regression model to estimate its TSGE. Our models require Whole blood gene expression (WBGE), Whole Blood splicing (WBSp) information, and three demographic ‘confounding’ factors (Age, Race, and Sex), with genetype information as one additonal option. 
 
 ## Data download
 Download data files from GTEx Portal and dbGaP.
@@ -15,7 +14,7 @@ The code for prediction of gene expression of a target tissue consists of the fo
 ### Model building 
 For each gene the top 5 PCs of Whole blood transcriptome is used to build the model in training set of the data 
 and then the model is used to predict its expression in testing set. Five-fold cross validation prediction for 
-all the genes are performed. Model is build using lasso regression method using cv.glmnet function from glmnet R-package.
+all the genes are performed. Model is build using lasso regression method using cv.glmnet() function from glmnet R-package.
 
 ### Measuring prediction accuracy 
 The prediction accuracy for each of the genes are measure using pearson correlation coefficient. Also likelihood ratio test 
