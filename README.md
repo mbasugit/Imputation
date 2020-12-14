@@ -6,13 +6,14 @@ information (age, gender and race), with clinical implications. If his/her genot
 We trained TEEBot on GTEx version 6 and evaluated its performance in a cross-validation manner. For each gene in each target tissue, we first evaluate its predictability based on LLR test and then fit a lasso regression model to estimate its TSGE. Our models require Whole blood gene expression (WBGE), Whole Blood splicing (WBSp) information, and three demographic ‘confounding’ factors (Age, Race, and Sex), with genetype information as one additonal option. 
 
 ## Data download
-Download data files from GTEx Portal and dbGaP.
+Download data files from GTEx Portal and dbGaP. Need to download gene expression, phenotype and genotype file downloaded 
+from GTEx Portal and dbGaP.
 
 ## Main script
 The code for prediction of gene expression of a target tissue consists of the following steps:
 
 ### Model building 
-For each gene the top 5 PCs of Whole blood transcriptome is used to build the model in training set of the data 
+For each gene the top 10 PCs of Whole blood transcriptome is used to build the model in training set of the data 
 and then the model is used to predict its expression in testing set. Five-fold cross validation prediction for 
 all the genes are performed. Model is build using lasso regression method using cv.glmnet() function from glmnet R-package.
 
