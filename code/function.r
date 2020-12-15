@@ -1,14 +1,14 @@
 format_gtexdatav6<-function(dirx){
 library(data.table)
-setwd(dirx)	
-dt=fread("phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt") #phenotype data 
+	
+dt=fread(paste0(dirx,"phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt")) #phenotype data 
 pheno.dt=dt[-1,]
 setnames(pheno.dt,as.character(dt[1,]))
 #subj=unlist(lapply(phe.dt$SUBJID, function(tt) {substr(tt,6,9)}))
 pheno.subj=sapply(1:nrow(pheno.dt), function(x){ y=unlist(strsplit(pheno.dt$SUBJID[x], split="-")); l=length(y); y[l] })
 
 #gene expression
-rpkm=fread("All_Tissue_Site_Details_Analysis.combined.rpkm.gct") #gene expression data
+rpkm=fread(paste0(dirx,"All_Tissue_Site_Details_Analysis.combined.rpkm.gct")) #gene expression data
 rpkm$Name = sapply(strsplit(rpkm$Name, '[.]'), '[[', 1)
 
 rpkm1=unique(rpkm)
@@ -17,7 +17,7 @@ rpkm.col = colnames(rpkm); #gtex.row = rownames(gtex);
 patients = unique(sapply(strsplit(rpkm.col[-(1:2)], split="-"), '[[', 2))
 
 
-annt=fread("GTEx_Data_V6_Annotations_SampleAttributesDS.txt")
+annt=fread(paste0(dirx,"GTEx_Data_V6_Annotations_SampleAttributesDS.txt"))
 tmp = data.table(SAMPID=rpkm.col[-(1:2)], myid = 1:(length(rpkm.col) -2)); 
 setkey(tmp, SAMPID); 
 setkey(annt, SAMPID);
@@ -30,7 +30,7 @@ expc.nt=annt1
 #=======================================================================
 #### gene information to identify protein coding genes
 require(pracma)
-gene=fread("Homo_sapiens.gene_info") 
+gene=fread(paste0(dirx,"Homo_sapiens.gene_info")) 
 gene.symbol=gene$V3
 
 gene.IDs=gene$V6 
