@@ -31,11 +31,11 @@ Code: regression_model_articleoutput.r
 
 #### Input (workdir/input)
 Input are the gene expression, phenotypen and genotype file downloaded from GTEx Portal and dbGaP. 
-(i) Gene expression data: All_Tissue_Site_Details_Analysis.combined.rpkm.gct
-(ii) Phenotype data: phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt
-(iii) Sample attribute: GTEx_Data_V6_Annotations_SampleAttributesDS.txt
-(iv) Gene property file from ncbi: Homo_sapiens.gene_info (downloaded from https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/  on march2016)
-(v) Genotype data: genotype.v6.chr1_22.Rdata
+i) Gene expression data: All_Tissue_Site_Details_Analysis.combined.rpkm.gct
+ii) Phenotype data: phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt
+iii) Sample attribute: GTEx_Data_V6_Annotations_SampleAttributesDS.txt
+iv) Gene property file from ncbi: Homo_sapiens.gene_info (downloaded from https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/  on march2016)
+v) Genotype data: genotype.v6.chr1_22.Rdata
 These files are read in the code within function "format_gtexdatav6()".
  We also have a input file "tissue_pair_work_v6.RData" which contains a table with first column 
  as whole blood, second column target tissue and third colum are the number of common samples. 
