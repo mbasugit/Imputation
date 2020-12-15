@@ -29,7 +29,12 @@ test (FDR<=0.05) and also have pearson correlation coefficient values beyond a p
 ### For prediction of target tissue
 Code: regression_model_articleoutput.r
 #### Input
-Input are the gene expression, phenotype and genotype file downloaded from GTEx Portal and dbGaP. 
+Input are the gene expression, phenotypen and genotype file downloaded from GTEx Portal and dbGaP. 
+(i) Gene expression data: All_Tissue_Site_Details_Analysis.combined.rpkm.gct
+(ii) Phenotype data: phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt
+(iii) Sample attribute: GTEx_Data_V6_Annotations_SampleAttributesDS.txt
+(iv) Gene property file from ncbi: Homo_sapiens.gene_info (downloaded from https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/  on march2016)
+All these files needs to be kept within the "workdir/input" folder. These files are read in the code within function 
 The input parameters to run the code are index, run, fold, ENS. 
  We also have a input file "tissue_pair_work_v6.RData" which contains a table with first column 
  as whole blood, second column target tissue and third colum are the number of common samples. 
