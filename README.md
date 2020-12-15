@@ -27,18 +27,20 @@ test (FDR<=0.05) and also have pearson correlation coefficient values beyond a p
 
 ## Code running instructions
 ### For prediction of target tissue
-Code: regression_model_articleoutput.r
-#### Input
+Code: regression_model_articleoutput.r 
+
+#### Input (workdir/input)
 Input are the gene expression, phenotypen and genotype file downloaded from GTEx Portal and dbGaP. 
 (i) Gene expression data: All_Tissue_Site_Details_Analysis.combined.rpkm.gct
 (ii) Phenotype data: phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt
 (iii) Sample attribute: GTEx_Data_V6_Annotations_SampleAttributesDS.txt
 (iv) Gene property file from ncbi: Homo_sapiens.gene_info (downloaded from https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/  on march2016)
-All these files needs to be kept within the "workdir/input" folder. These files are read in the code within function 
-The input parameters to run the code are index, run, fold, ENS. 
+These files are read in the code within function "format_gtexdatav6()".
  We also have a input file "tissue_pair_work_v6.RData" which contains a table with first column 
  as whole blood, second column target tissue and third colum are the number of common samples. 
+All these files needs to be kept within the "workdir/input" folder. Along with these files we need to keep the function.r in the "workdir/input" folder.
 
+The input parameters to run the code are index, run, fold, ENS. 
 1) "index" are the tissue ids, the ids for the 32 target tissues are as follows 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,32,34,37,39. 
 2) "run" indicated which model to compute, M1 or M2. To compute model M1 run=100, and for M2 run=110
 3) fold : how many fold cross validation we want.
