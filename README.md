@@ -29,7 +29,7 @@ test (FDR<=0.05) and also have pearson correlation coefficient values beyond a p
 ### For prediction of target tissue
 Code: regression_model_articleoutput.r
 #### Input
-Input are the gene expression, phenotype and genotype file downloaded from GTEx Portal and dbGaP.
+Input are the gene expression, phenotype and genotype file downloaded from GTEx Portal and dbGaP. 
 The input parameters to run the code are index, run, fold, ENS. 
  We also have a input file "tissue_pair_work_v6.RData" which contains a table with first column 
  as whole blood, second column target tissue and third colum are the number of common samples. 
