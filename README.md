@@ -49,3 +49,7 @@ that is the predictibility scores.
 
 note: Download the code file (regression_model_articleoutput.r) and the function.r in the same folder. Example path to store the
 codes is "/home/Desktop/Imputation". Within Imputation make a folder named "input" and "output". In the "output" folder the output of the codes automatically gets saved.
+
+#### Package install
+For the code the following R-packages needs to be installed 
+"glmnet", "data.table", "foreach", "doMC", "ROCR", "lmtest".
