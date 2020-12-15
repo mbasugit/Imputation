@@ -29,7 +29,7 @@ PC3=as.numeric(args[5]); #Snp
 source(paste0(workdir,'/code/function.r'));
 
 #load gtex data 
-format_gtexdatav6(); 
+format_gtexdatav6(paste0(workdir,"/input/")); 
 #In this function we directly read gtex v6 phenotype data and gene expression data and merge them 
 #into format convenient to be used in the code and create a gtexdata_v6.RData file in workdir/input/ folder.
 load(paste0(workdir,"/input/gtexdata_v6.RData"));
