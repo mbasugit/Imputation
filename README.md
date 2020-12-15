@@ -31,7 +31,7 @@ Code: regression_model_articleoutput.r
 
 #### Input (workdir/input)
 Input are the gene expression, phenotypen and genotype file downloaded from GTEx Portal and dbGaP. 
-i) Gene expression data: All_Tissue_Site_Details_Analysis.combined.rpkm.gct
+i) Gene expression data: All_Tissue_Site_Details_Analysis.combined.rpkm.gct \
 ii) Phenotype data: phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt
 iii) Sample attribute: GTEx_Data_V6_Annotations_SampleAttributesDS.txt
 iv) Gene property file from ncbi: Homo_sapiens.gene_info (downloaded from https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/  on march2016)
