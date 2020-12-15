@@ -1,5 +1,6 @@
 format_gtexdatav6<-function(dirx){
 library(data.table)
+setwd(dirx)	
 dt=fread("phs000424.v6.pht002742.v6.p1.c1.GTEx_Subject_Phenotypes.GRU.txt") #phenotype data 
 pheno.dt=dt[-1,]
 setnames(pheno.dt,as.character(dt[1,]))
