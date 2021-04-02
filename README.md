@@ -6,23 +6,20 @@ information (age, gender and race), with clinical implications. If his/her genot
 We trained TEEBot on GTEx version 6 and evaluated its performance in a cross-validation manner. For each gene in each target tissue, we first evaluate its predictability based on LLR test and then fit a lasso regression model to estimate its TSGE. Our models require Whole blood gene expression (WBGE), Whole Blood splicing (WBSp) information, and three demographic ‘confounding’ factors (Age, Race, and Sex), with genetype information as one additonal option. 
 
 ## Data download
-Download data files from GTEx Portal and dbGaP. Need to download gene expression, phenotype and genotype file downloaded 
-from GTEx Portal and dbGaP.
+Download data files from GTEx Portal and dbGaP. The data include gene expression, transcript expression, phenotype and genotype information (optional).
 
 ## Main script
-The code for prediction of gene expression of a target tissue consists of the following steps:
+The code to predict the gene expression of a target tissue consists of the following steps:
 
 ### Model building 
-For each gene the top 10 PCs of Whole blood transcriptome is used to build the model in training set of the data 
-and then the model is used to predict its expression in testing set. Five-fold cross validation prediction for 
-all the genes are performed. Model is build using lasso regression method using cv.glmnet() function from glmnet R-package.
+For each gene, the top PCs of Whole blood transcriptome (top 10 PCs for gene expression and top 20 PCs for splicing profile) as features are used to build a gene specific model to predict its expression in the target tissue. Five-fold cross validation are performed for all the genes across tissues. The model based on lasso regression is implemented using cv.glmnet() function from glmnet R-package.
 
 ### Measuring prediction accuracy 
-The prediction accuracy for each of the genes are measure using pearson correlation coefficient. Also likelihood ratio test 
-is performed for each gene  to assess which gene's expression are predictable from blood transcriptome above and beyond the 
-confounders (age, race and sex). Thus for each gene we have its prediatability score (in terms of Pearson correlation coefficient)
-and FDR of the LLR p-value. Prediction accuracy for each tissue is reported based on the genes which pass the likelihood ratio 
-test (FDR<=0.05) and also have pearson correlation coefficient values beyond a predefined threshold. 
+The prediction accuracy for each gene are evaluated using Pearson correlation test between the predicted expression and the ground truth. Likelihood ratio test 
+is also performed for each gene to assess the independent contribution of blood transcriptome beyond the 
+confounders (age, race and sex). For each gene we provide both its prediatability score (in terms of Pearson correlation coefficient)
+and FDR of the LLR p-value. We only report the prediction accuracies of genes which pass the likelihood ratio 
+test (FDR<=0.05) and also have pearson correlation coefficient values above a predefined threshold. 
 
 
 ## Code running instructions
